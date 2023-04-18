@@ -12,7 +12,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Redressed&Berkshire+Swash&family=Kaushan+Script&family=Montserrat:wght@100;400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
 
-        <title>University Recommendation System </title>
+        <title>
+            University Recommendation System </title>
     </head>
     <body>
 
@@ -154,6 +155,15 @@
                         </table>
                     </div>
                 </div>
+                <footer class="footer">
+                    <ul class="nav justify-content-center">
+                        <li><a class="footer-items" href="{{ url_for('home') }}">Home</a></li>
+                        <li><a class="footer-items" href="https://github.com/pbadhe/University-Recommendation-System.git" target="_blank">GitHub</a></li>
+                        <li><a class="footer-items" href="#">About</a></li>
+                    </ul>
+                    <hr>
+                    <p class="text-center copyright">© Group ID-06</p>
+                </footer>
             </div> <!-- End container -->
         </body>
     </html>
