@@ -20,7 +20,7 @@
         <section class="navigation-bar">
             <nav class="navbar navbar-expand-lg py-3">
 
-                <a class="navbar-brand" href="{{ url_for('home') }}">University Recommendation System</a>
+                <a class="navbar-brand" href="{{ url_for('home') }}">Uni - Match</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -63,11 +63,15 @@
                             <select class="form-select" id="major" name="Major">
                                 <option selected disabled value="">Choose a Major</option>
                                 {% for program in programs %}
-                                    <option value="{{ program }}">{{ program }}</option>
+                                    {% if program == request.form.get('Major') %}
+                                        <option value="{{ program }}" selected>{{ program }}</option>
+                                    {% else %}
+                                        <option value="{{ program }}">{{ program }}</option>
+                                    {% endif %}
                                 {% endfor %}
                             </select>
                         </div>
-
+                                  
                         <div class="mb-3">
                             <label class="form-label">Select Score Type:</label><br>
                             <div class="form-check form-check-inline">
@@ -83,44 +87,46 @@
                             <fieldset>
                               <legend>TOEFL/IELTS Scores:</legend>
                               <label for="toefls" class="form-label">Score:</label>
-                              <input type="number" id="toefls" name="toeflScore" class="form-control" max="120" >
-                            </fieldset>
-                          </div>
-                          <div class="mb-3">
-                            <fieldset>
-                              <legend>GRE Scores:</legend>
-                              <div class="row">
-                                <div class="col-md-4">
-                                  <label for="greq" class="form-label">Quantitative Score:</label>
-                                  <input type="number" id="greq" name="GRE_Q" class="form-control" max="170">
-                                </div>
-                                <div class="col-md-4">
-                                  <label for="grev" class="form-label">Verbal Score:</label>
-                                  <input type="number" id="grev" name="GRE_V" class="form-control" max="170">
-                                </div>
-                                <div class="col-md-4">
-                                  <label for="grea" class="form-label">Analytical Writing:</label>
-                                  <input type="number" id="grea" name="GRE_AWA" class="form-control">
-                                </div>
-                              </div>
+                              <input type="number" max="120" id="toefls" name="toeflScore" class="form-control"  value="{{ request.form.get('toeflScore', '') }}" >
                             </fieldset>
                           </div>
                           
+
+                          <div class="mb-3">
+                            <fieldset>
+                                <legend>GRE Scores:</legend>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="greq" class="form-label">Quantitative Score:</label>
+                                        <input type="number" max="170" id="greq" name="GRE_Q" class="form-control" max="170" value="{{ request.form.get('GRE_Q', '') }}">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="grev" class="form-label">Verbal Score:</label>
+                                        <input type="number" max="170" id="grev" name="GRE_V" class="form-control" max="170" value="{{ request.form.get('GRE_V', '') }}">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="grea" class="form-label">Analytical Writing:</label>
+                                        <input type="text" id="grea" name="GRE_AWA" class="form-control" step="any" value="{{ request.form.get('GRE_AWA', '') }}">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                          
                         <div class="mb-3">
                             <label for="months" class="form-label">Work Experience (in months):</label>
-                            <input type="number" id="months" name="industryExp" class="form-control" placeholder="Example: 24">
+                            <input type="number" id="months" name="industryExp" class="form-control" placeholder="Example: 24" value="{{ request.form.industryExp }}">
                         </div>
                         <div class="mb-3">
                             <label for="months" class="form-label">Research Experience (in months):</label>
-                            <input type="number" id="months" name="researchExp" class="form-control" placeholder="Example: 8">
+                            <input type="number" id="months" name="researchExp" class="form-control" placeholder="Example: 8" value="{{ request.form.researchExp }}">
                         </div>
                         <div class="mb-3">
                             <label for="cgpa" class="form-label">CGPA (out of 4):</label>
-                            <input type="number" id="cgpa" name="CGPA" class="form-control">
+                            <input type="text" id="cgpa" name="CGPA" class="form-control" step="any" value="{{ request.form.CGPA }}">
                         </div>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-dark btn-lg click-btn">Submit</button>
-                            <button type="reset" class="btn btn-dark btn-lg click-btn">Reset</button>
+                            <button type="button" class="btn btn-dark btn-lg click-btn" onclick="window.location.href = '/page2';">Reset</button>
 
                         </div>
                     </form>
@@ -128,37 +134,24 @@
                 <div class="col-md-6">
                     <h1 class="text-center mb-4">Recommended Universities</h1>
                     <div class="container">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>University Name</th>
-                            <th>Ranking</th>
-                            <th>Program</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!-- <tr>
-                            <td>Columbia University</td>
-                            <td>11</td>
-                            <td>Computer Science</td>
-                        </tr>
-                        <tr>
-                            <td>University of Texas--Austin</td>
-                            <td>9</td>
-                            <td>Computer Science</td>
-                        </tr>
-                        <tr>
-                            <td>Cornell University</td>
-                            <td>6</td>
-                            <td>Computer Science</td>
-                        </tr> -->
-                        {% for univ in universities %}
-                            <tr>
-                                <td>{{ univ }}</td><td>lol</td><td>loler</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>University Name</th>
+                                    <th>Ranking</th>
+                                    <th>Program</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for univ in universities %}
+                                    <tr>
+                                        <td>{{ univ }}</td>
+                                        <td>TBD</td>
+                                        <td>{{ request.form.get('Major') }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div> <!-- End container -->

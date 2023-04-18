@@ -44,10 +44,10 @@ def filterTopUniversities(x, major):
     return top_accepted_df
 
 def getRank(univs):
-    df = pd.read_csv('data/usnews_university_rankings.csv')
+    df = pd.read_csv('src/data/usnews_university_rankings.csv')
 
 def arrangeUniversitites(predicted_universities):
-    rankings = pd.read_csv('data/usnews_university_rankings.csv')
+    rankings = pd.read_csv('src/data/usnews_university_rankings.csv')
     rankings.drop(['Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4'],
                   inplace=True, axis=1)
     df = rankings

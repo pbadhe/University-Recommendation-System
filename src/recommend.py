@@ -7,7 +7,7 @@ import pred, processData
 
 app = Flask(__name__)
 CORS(app)
-prepData = pd.read_csv("data/Prepared MS University Data.csv")
+prepData = pd.read_csv("src\data\Prepared MS University Data.csv")
 
 programs = ['Computer Science', 'Speech Language Pathology', 'Electrical Engineering', 'MIS', 'Civil Engineering', 'Mechanical Engineering', 'Electronics and Communication', 'Industrial Engineering', 'Information Systems', 'Statistics', 'Urban Planning', 'Public Policy', 'Business Analytics', 'Architecture', 'Engineering Management', 'Electrical and Computer Engineering', 'Economics', 'Aerospace Engineering', 'Biomedical Engineering', 'Public Health', 'English', 'Chemical Engineering', 'Philosophy']
 
@@ -60,7 +60,7 @@ def ssd():
 @app.route('/university')
 def university():
     
-    with open('data/Universities.txt', 'r') as f:
+    with open('src/data/Universities.txt', 'r') as f:
         universities = [line.strip() for line in f]
     search_query = request.args.get('search')
 
