@@ -7,7 +7,7 @@ import pred, processData
 
 app = Flask(__name__)
 CORS(app)
-prepData = pd.read_csv("data/Prepared MS University Data.csv")
+prepData = pd.read_csv("src\data\Prepared MS University Data.csv")
 
 programs = ['Computer Science', 'Speech Language Pathology', 'Electrical Engineering', 'MIS', 'Civil Engineering', 'Mechanical Engineering', 'Electronics and Communication', 'Industrial Engineering', 'Information Systems', 'Statistics', 'Urban Planning', 'Public Policy', 'Business Analytics', 'Architecture', 'Engineering Management', 'Electrical and Computer Engineering', 'Economics', 'Aerospace Engineering', 'Biomedical Engineering', 'Public Health', 'English', 'Chemical Engineering', 'Philosophy']
 
@@ -26,10 +26,6 @@ def page2():
 @app.route('/aboutus')
 def aboutus():
     return render_template("aboutus.html", programs=programs)
-
-@app.route('/university')
-def university():
-    return render_template("university.html")
 
 @app.route('/predictuni', methods=['GET', 'POST'])
 def predictuni():
@@ -59,6 +55,21 @@ def predictuni():
 @app.route('/',methods=['GET', 'POST'])
 def ssd():
     return render_template("index.html")
+
+@app.route('/university')
+def university():
+    
+    with open('src/data/Universities.txt', 'r') as f:
+        universities = [line.strip() for line in f]
+        
+    # If a search query was submitted, filter the list of universities
+    search_query = request.args.get('search')
+    
+    if search_query:
+        universities = [u for u in universities if search_query.lower() in u.lower()]
+    return render_template("university.html", universities=universities)
+
+
 
 port = int(os.environ.get('PORT', 8080))
 if __name__ == '__main__':
