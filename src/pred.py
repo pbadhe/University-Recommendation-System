@@ -43,6 +43,9 @@ def filterTopUniversities(x, major):
     top_accepted_df = top_accepted_df[top_accepted_df['University'].isin(top_univs)]
     return top_accepted_df
 
+def getRank(univs):
+    df = pd.read_csv('data/usnews_university_rankings.csv')
+
 def arrangeUniversitites(predicted_universities):
     rankings = pd.read_csv('data/usnews_university_rankings.csv')
     rankings.drop(['Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4'],
@@ -62,7 +65,7 @@ def arrangeUniversitites(predicted_universities):
                 best_match = university
                 best_score = score
         if best_match is not None:
-            matched_universities[predicted_university] = matched_universities[predicted_university] = df[df['Universities'] == best_match]['Rank'].values[0]
+            matched_universities[predicted_university] = df[df['Universities'] == best_match]['Rank'].values[0]
 
     sorted_matched_universities = sorted(matched_universities.items(), key=lambda x: x[1])
     return [item[0] for item in sorted_matched_universities]

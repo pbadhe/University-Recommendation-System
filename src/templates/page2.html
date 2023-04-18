@@ -56,11 +56,11 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <h1 class="text-center mb-4">University Admissions</h1>
-                    <form id="admissions-form">
+                    <h1 class="text-center mb-4">Your profile</h1>
+                    <form id="admissions-form" method="POST" action="/predictuni" enctype = "multipart/form-data">
                         <div class="mb-3">
                             <label for="major" class="form-label">Select a Major:</label>
-                            <select class="form-select" id="major" name="major">
+                            <select class="form-select" id="major" name="Major">
                                 <option selected disabled value="">Choose a Major</option>
                                 {% for program in programs %}
                                     <option value="{{ program }}">{{ program }}</option>
@@ -83,7 +83,7 @@
                             <fieldset>
                               <legend>TOEFL/IELTS Scores:</legend>
                               <label for="toefls" class="form-label">Score:</label>
-                              <input type="number" id="toefls" name="toefls" class="form-control" max="120">
+                              <input type="number" id="toefls" name="toeflScore" class="form-control" max="120" >
                             </fieldset>
                           </div>
                           <div class="mb-3">
@@ -92,66 +92,71 @@
                               <div class="row">
                                 <div class="col-md-4">
                                   <label for="greq" class="form-label">Quantitative Score:</label>
-                                  <input type="number" id="greq" name="greq" class="form-control" max="170">
+                                  <input type="number" id="greq" name="GRE_Q" class="form-control" max="170">
                                 </div>
                                 <div class="col-md-4">
                                   <label for="grev" class="form-label">Verbal Score:</label>
-                                  <input type="number" id="grev" name="grev" class="form-control" max="170">
+                                  <input type="number" id="grev" name="GRE_V" class="form-control" max="170">
                                 </div>
                                 <div class="col-md-4">
                                   <label for="grea" class="form-label">Analytical Writing:</label>
-                                  <input type="number" id="grea" name="grea" class="form-control">
+                                  <input type="number" id="grea" name="GRE_AWA" class="form-control">
                                 </div>
                               </div>
                             </fieldset>
                           </div>
                           
                         <div class="mb-3">
-                            <label for="months" class="form-label">Months of Experience:</label>
-                            <input type="number" id="months" name="months" class="form-control">
+                            <label for="months" class="form-label">Work Experience (in months):</label>
+                            <input type="number" id="months" name="industryExp" class="form-control" placeholder="Example: 24">
                         </div>
                         <div class="mb-3">
-                            <label for="cgpa" class="form-label">CGPA:</label>
-                            <input type="number" id="cgpa" name="cgpa" class="form-control">
+                            <label for="months" class="form-label">Research Experience (in months):</label>
+                            <input type="number" id="months" name="researchExp" class="form-control" placeholder="Example: 8">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cgpa" class="form-label">CGPA (out of 4):</label>
+                            <input type="number" id="cgpa" name="CGPA" class="form-control">
                         </div>
                         <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-dark btn-lg click-btn" onclick="submitForm()">Submit</button>
-                            <button type="reset" class="btn btn-dark btn-lg click-btn" onclick="resetForm()">Reset</button>
+                            <button type="submit" class="btn btn-dark btn-lg click-btn">Submit</button>
+                            <button type="reset" class="btn btn-dark btn-lg click-btn">Reset</button>
 
                         </div>
                     </form>
                 </div>
                 <div class="col-md-6">
-                    <h1 class="text-center mb-4">Admissions Data</h1>
+                    <h1 class="text-center mb-4">Recommended Universities</h1>
                     <div class="container">
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Student Name</th>
-                            <th>Admission Date</th>
+                            <th>University Name</th>
+                            <th>Ranking</th>
                             <th>Program</th>
-                            <th>GPA</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>John Smith</td>
-                            <td>01/01/2022</td>
-                            <td>Bachelor of Science in Computer Science</td>
-                            <td>3.7</td>
+                        <!-- <tr>
+                            <td>Columbia University</td>
+                            <td>11</td>
+                            <td>Computer Science</td>
                         </tr>
                         <tr>
-                            <td>Jane Doe</td>
-                            <td>02/15/2022</td>
-                            <td>Bachelor of Arts in English</td>
-                            <td>3.2</td>
+                            <td>University of Texas--Austin</td>
+                            <td>9</td>
+                            <td>Computer Science</td>
                         </tr>
                         <tr>
-                            <td>Mike Johnson</td>
-                            <td>03/20/2022</td>
-                            <td>Bachelor of Science in Biology</td>
-                            <td>3.9</td>
-                        </tr>
+                            <td>Cornell University</td>
+                            <td>6</td>
+                            <td>Computer Science</td>
+                        </tr> -->
+                        {% for univ in universities %}
+                            <tr>
+                                <td>{{ univ }}</td><td>lol</td><td>loler</td>
+                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                     </div>

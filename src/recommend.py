@@ -30,25 +30,28 @@ def aboutus():
 @app.route('/predictuni', methods=['GET', 'POST'])
 def predictuni():
     if request.method == 'POST':
-        # major = request.form.get("Major")  
-        # cgpa = request.form.get("CGPA")  
-        # greV= request.form.get("GRE_V")  
-        # greQ= request.form.get("GRE_Q")  
-        # greAWA= request.form.get("GRE_AWA")  
-        # toefl= request.form.get("toeflScore")  
-        # industryExp= request.form.get("industryExp")  
-        # researchExp= request.form.get("researchExp")
-        major = "Computer Science"
-        # major = "MIS"
-        cgpa = processData.handleCGPA(3.71)
-        greV = 158
-        greQ = 164
-        greAWA = 4
-        toefl = 119
-        industryExp = 36
-        researchExp = 0
-        unis = pred.getUniversities(prepData, major, cgpa, greV, greQ, greAWA, toefl, industryExp, researchExp)
-    return render_template("page2.html", universities=unis)
+        major = request.form.get("Major")
+        cgpa = float(request.form.get("CGPA"))
+        greV= float(request.form.get("GRE_V"))
+        greQ= float(request.form.get("GRE_Q"))
+        greAWA= float(request.form.get("GRE_AWA"))
+        toefl= round(float(request.form.get("toeflScore")) * 2) / 2 #Handling for IELTS
+        industryExp= float(request.form.get("industryExp"))
+        researchExp= float(request.form.get("researchExp"))
+        # major = "Computer Science"
+        # # major = "MIS"
+        # cgpa = processData.handleCGPA(3.71)
+        # greV = 158
+        # greQ = 164
+        # greAWA = 4
+        # toefl = 119
+        # industryExp = 36
+        # researchExp = 0
+        univs = pred.getUniversities(prepData, major, cgpa, greV, greQ, greAWA, toefl, industryExp, researchExp)
+        # ranks = pred.getRank(univs)
+        # print(ranks)
+        major = [major]*len(univs)
+    return render_template("page2.html", universities=univs)
                 
 @app.route('/',methods=['GET', 'POST'])
 def ssd():

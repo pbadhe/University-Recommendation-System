@@ -33,3 +33,21 @@ def handleCGPA(cgpa):
     if cgpa > 4.0 and cgpa <= 10.0 :
         cgpa = convert10to4[cgpa]
     return cgpa
+
+def ielts_to_toefl(ielts_score):
+    ielts_to_toefl_table = {
+        9: 118,
+        8.5: 115,
+        8: 110,
+        7.5: 102,
+        7: 94,
+        6.5: 79,
+        6: 60,
+        5.5: 46,
+        5: 35,
+        4.5: 23,
+        4: 12,
+        3.5: 0,
+        3: 0
+    }
+    return ielts_to_toefl_table.get(ielts_score, 0)
