@@ -59,7 +59,7 @@
 
         <ul id="university-list">
             {% for university in universities %}
-                <li>{{ university }}</li>
+                <li>{{ " ".join(university.split(",")) }}</li>
             {% endfor %}
         </ul>
 

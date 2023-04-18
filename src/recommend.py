@@ -58,16 +58,24 @@ def ssd():
 
 @app.route('/university')
 def university():
-    
+
     with open('src/data/Universities.txt', 'r') as f:
         universities = [line.strip() for line in f]
-        
+
     # If a search query was submitted, filter the list of universities
     search_query = request.args.get('search')
-    
+
     if search_query:
         universities = [u for u in universities if search_query.lower() in u.lower()]
-    return render_template("university.html", universities=universities)
+
+    # Remove the first and last square brackets
+    universities = " ".join(universities).split("[")[1].split("]")[0]
+
+    # Split the universities string at the comma and create a list of strings
+    universities_list = universities.split(",")
+
+    return render_template("university.html", universities=universities_list)
+
 
 
 

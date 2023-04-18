@@ -59,9 +59,15 @@
                     <h1 class="text-center mb-4">University Admissions</h1>
                     <form id="admissions-form">
                         <div class="mb-3">
-                            <label for="university" class="form-label">University Name:</label>
-                            <input type="text" id="university" name="university" class="form-control">
+                            <label for="major" class="form-label">Select a Major:</label>
+                            <select class="form-select" id="major" name="major">
+                                <option selected disabled value="">Choose a Major</option>
+                                {% for program in programs %}
+                                    <option value="{{ program }}">{{ program }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
+
                         <div class="mb-3">
                             <label class="form-label">Select Score Type:</label><br>
                             <div class="form-check form-check-inline">
@@ -75,30 +81,31 @@
                         </div>
                         <div class="mb-3">
                             <fieldset>
-                                <legend>TOEFL/IELTS Scores:</legend>
-                                <label for="toefls" class="form-label">Score:</label>
-                                <input type="number" id="toefls" name="toefls" class="form-control">
+                              <legend>TOEFL/IELTS Scores:</legend>
+                              <label for="toefls" class="form-label">Score:</label>
+                              <input type="number" id="toefls" name="toefls" class="form-control" max="120">
                             </fieldset>
-                        </div>
-                        <div class="mb-3">
+                          </div>
+                          <div class="mb-3">
                             <fieldset>
-                                <legend>GRE Scores:</legend>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label for="greq" class="form-label">Quantitative Score:</label>
-                                        <input type="number" id="greq" name="greq" class="form-control">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="grev" class="form-label">Verbal Score:</label>
-                                        <input type="number" id="grev" name="grev" class="form-control">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="grea" class="form-label">Analytical Writing Score:</label>
-                                        <input type="number" id="grea" name="grea" class="form-control">
-                                    </div>
+                              <legend>GRE Scores:</legend>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <label for="greq" class="form-label">Quantitative Score:</label>
+                                  <input type="number" id="greq" name="greq" class="form-control" max="170">
                                 </div>
+                                <div class="col-md-4">
+                                  <label for="grev" class="form-label">Verbal Score:</label>
+                                  <input type="number" id="grev" name="grev" class="form-control" max="170">
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="grea" class="form-label">Analytical Writing:</label>
+                                  <input type="number" id="grea" name="grea" class="form-control">
+                                </div>
+                              </div>
                             </fieldset>
-                        </div>
+                          </div>
+                          
                         <div class="mb-3">
                             <label for="months" class="form-label">Months of Experience:</label>
                             <input type="number" id="months" name="months" class="form-control">
@@ -108,7 +115,9 @@
                             <input type="number" id="cgpa" name="cgpa" class="form-control">
                         </div>
                         <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+                            <button type="button" class="btn btn-dark btn-lg click-btn" onclick="submitForm()">Submit</button>
+                            <button type="reset" class="btn btn-dark btn-lg click-btn" onclick="resetForm()">Reset</button>
+
                         </div>
                     </form>
                 </div>
