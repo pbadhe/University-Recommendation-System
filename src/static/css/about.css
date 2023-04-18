@@ -1,4 +1,50 @@
-body{
+body {
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    margin-top: 50px;
+    max-width: 800px;
+    border: 2px solid #ccc;
+    padding: 20px;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    text-align: justify;
+    margin-bottom: 20px;
+  }
+
+  li {
+    list-style: none;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .col-md-6 {
+    margin: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-text {
+    color: black;
+  }
+
+  body{
     background-color: #AACFD0;
     background-attachment: fixed;
     font-family: 'Montserrat', sans-serif;
