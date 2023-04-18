@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+        <!-- bootstrap css -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Redressed&Berkshire+Swash&family=Kaushan+Script&family=Montserrat:wght@100;400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+
+        <title>University Recommendation System </title>
+    </head>
+    <body>
+        <section class="navigation-bar">
+            <nav class="navbar navbar-expand-lg py-3">
+
+                <a class="navbar-brand" href="{{ url_for('home') }}">University Recommendation System</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ url_for('home') }}">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Majors
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% for program in programs %}
+                                <li><a class="dropdown-item" href="#">{{ program }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('university') }}">Our Universities: </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('aboutus') }}">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            
+            </nav>
+        </section>
+        
+
+        <!-- TITLE SECTION -->
+        <section class="title">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h1> Your <span>personalised</span> Academic Roadmap :)</h1>
+                    </div>
+                    <div class="col-lg-6">
+                        <img class="title-image" src="{{ url_for('static', filename='css/images/giphy.gif') }}" alt="ser-logo">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br>
+
+
+        <!-- Card SECTION -->
+        <div class="container">
+            <div class="row">
+              <div class="col-md-12 card">
+                <h2>Get Your Admit now!</h2>
+                <a href="{{ url_for('page2') }}">
+                  <button type="button" class="btn btn-dark btn-lg click-btn">Click Here</button>
+                </a>
+              </div>
+            </div>
+          </div>
+  
+
+          <!-- FOOTER -->
+        <footer class="footer">
+            <ul class="nav justify-content-center">
+                <li><a class="footer-items" href="{{ url_for('home') }}">Home</a></li>
+                <li><a class="footer-items" href="#">GitHub</a></li>
+                <li><a class="footer-items" href="#">About</a></li>
+            </ul>
+            <hr>
+            <p class="text-center copyright">© Group ID-06</p>
+        </footer>
+  
+          
+
+       
+      
+      </body>
+</html>
