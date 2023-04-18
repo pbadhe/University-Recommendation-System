@@ -42,18 +42,17 @@ def predictuni():
         # toefl= request.form.get("toeflScore")  
         # industryExp= request.form.get("industryExp")  
         # researchExp= request.form.get("researchExp")
-        # major = "Computer Science"
-        major = "MIS"
-        cgpa = 3.71
-        greV = 158
-        greQ = 164
+        major = "Computer Science"
+        # major = "MIS"
+        cgpa = 3.9
+        greV = 156
+        greQ = 169
         greAWA = 4
-        toefl = 106
-        industryExp = 20
+        toefl = 119
+        industryExp = 36
         researchExp = 0
         # print(major,cgpa,greV,greQ,greAWA,toefl,industryExp,researchExp)
         unis = pred.getUniversities(prepData, major, cgpa, greV, greQ, greAWA, toefl, industryExp, researchExp)
-        print(unis)
     return render_template("page2.html", universities=unis)
                 
 @app.route('/',methods=['GET', 'POST'])
