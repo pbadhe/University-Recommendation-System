@@ -27,10 +27,6 @@ def page2():
 def aboutus():
     return render_template("aboutus.html", programs=programs)
 
-@app.route('/university')
-def university():
-    return render_template("university.html")
-
 @app.route('/predictuni', methods=['GET', 'POST'])
 def predictuni():
     if request.method == 'POST':
@@ -44,14 +40,13 @@ def predictuni():
         # researchExp= request.form.get("researchExp")
         # major = "Computer Science"
         major = "MIS"
-        cgpa = 3.71
+        cgpa = processData.handleCGPA(3.71)
         greV = 158
         greQ = 164
         greAWA = 4
         toefl = 106
         industryExp = 20
         researchExp = 0
-        # print(major,cgpa,greV,greQ,greAWA,toefl,industryExp,researchExp)
         unis = pred.getUniversities(prepData, major, cgpa, greV, greQ, greAWA, toefl, industryExp, researchExp)
         print(unis)
     return render_template("page2.html", universities=unis)
@@ -59,6 +54,25 @@ def predictuni():
 @app.route('/',methods=['GET', 'POST'])
 def ssd():
     return render_template("index.html")
+
+@app.route('/university')
+def university():
+    
+    with open('data/Universities.txt', 'r') as f:
+        universities = [line.strip() for line in f]
+    search_query = request.args.get('search')
+
+    if search_query:
+        universities = [u for u in universities if search_query.lower() in u.lower()]
+
+    # Remove the first and last square brackets
+    universities = " ".join(universities).split("[")[1].split("]")[0]
+
+    # Split the universities string at the comma and create a list of strings
+    universities_list = universities.split(",")
+
+    return render_template("university.html", universities=universities_list)
+
 
 port = int(os.environ.get('PORT', 8080))
 if __name__ == '__main__':

@@ -38,7 +38,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('university') }}">Our Universities: </a>
+                            <a class="nav-link" href="{{ url_for('university') }}">Our Universities </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('aboutus') }}">About Us</a>
@@ -48,5 +48,46 @@
             
             </nav>
         </section>
+        <h1 class="text-center mb-4">List of Universities</h1>
+
+        <form action="/university" method="GET" class="my-4">
+            <div class="input-group">
+                <input type="text" class="form-control form-control-lg" name="search" id="search" placeholder="Search for a university...">
+                <button type="submit" class="btn btn-dark btn-lg click-btn">Submit</button>
+            </div>
+        </form>
+
+        <ul id="university-list">
+            {% for university in universities %}
+                <li>{{ " ".join(university.split(",")) }}</li>
+            {% endfor %}
+        </ul>
+
+        <script>
+            const searchInput = document.getElementById('search');
+            const universityList = document.getElementById('university-list');
+            const universities = {{ universities|tojson }};
+
+            searchInput.addEventListener('input', () => {
+                const searchValue = searchInput.value.toLowerCase();
+
+                const filteredUniversities = universities.filter((university) => {
+                    return university.toLowerCase().includes(searchValue);
+                });
+
+                renderUniversityList(filteredUniversities);
+            });
+
+            function renderUniversityList(universities) {
+                let html = '';
+
+                universities.forEach((university) => {
+                    html += '<li>' + university + '</li>';
+                });
+
+                universityList.innerHTML = html;
+            }
+        </script>
+
   </body>
 </html>
