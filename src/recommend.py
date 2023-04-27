@@ -7,7 +7,7 @@ import pred, processData
 
 app = Flask(__name__)
 CORS(app)
-prepData = pd.read_csv("data\Prepared MS University Data.csv")
+prepData = pd.read_csv("data/Prepared MS University Data.csv")
 
 programs = ['Computer Science', 'Speech Language Pathology', 'Electrical Engineering', 'MIS', 'Civil Engineering', 'Mechanical Engineering', 'Electronics and Communication', 'Industrial Engineering', 'Information Systems', 'Statistics', 'Urban Planning', 'Public Policy', 'Business Analytics', 'Architecture', 'Engineering Management', 'Electrical and Computer Engineering', 'Economics', 'Aerospace Engineering', 'Biomedical Engineering', 'Public Health', 'English', 'Chemical Engineering', 'Philosophy']
 
@@ -31,13 +31,13 @@ def aboutus():
 def predictuni():
     if request.method == 'POST':
         major = request.form.get("Major")
-        cgpa = float(request.form.get("CGPA"))
-        greV= float(request.form.get("GRE_V"))
-        greQ= float(request.form.get("GRE_Q"))
-        greAWA= float(request.form.get("GRE_AWA"))
-        toefl= round(float(request.form.get("toeflScore")) * 2) / 2 #Handling for IELTS
-        industryExp= float(request.form.get("industryExp"))
-        researchExp= float(request.form.get("researchExp"))
+        cgpa = request.form.get("CGPA")
+        greV= request.form.get("GRE_V")
+        greQ= request.form.get("GRE_Q")
+        greAWA= request.form.get("GRE_AWA")
+        toefl= request.form.get("toeflScore") #Handling for IELTS
+        industryExp= request.form.get("industryExp")
+        researchExp= request.form.get("researchExp")
         # major = "Computer Science"
         # # major = "MIS"
         # cgpa = processData.handleCGPA(3.71)
@@ -47,6 +47,7 @@ def predictuni():
         # toefl = 119
         # industryExp = 36
         # researchExp = 0
+        print(major, cgpa, greV, greQ, greAWA, toefl, industryExp, researchExp)
         univs = pred.getUniversities(prepData, major, cgpa, greV, greQ, greAWA, toefl, industryExp, researchExp)
         # ranks = pred.getRank(univs)
         # print(ranks)

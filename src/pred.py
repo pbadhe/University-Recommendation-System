@@ -68,7 +68,7 @@ def arrangeUniversitites(predicted_universities):
             matched_universities[predicted_university] = df[df['Universities'] == best_match]['Rank'].values[0]
 
     sorted_matched_universities = sorted(matched_universities.items(), key=lambda x: x[1])
-    return [item[0] for item in sorted_matched_universities]
+    return sorted_matched_universities
 
 def getUniversities(top_accepted_df,  major, cgpa, greV, greQ, greAWA, toefl, industryExp, researchExp):
     scaler = MinMaxScaler()
@@ -126,9 +126,14 @@ def getUniversities(top_accepted_df,  major, cgpa, greV, greQ, greAWA, toefl, in
                 final_list.append(university)
 
         ranked_universities = arrangeUniversitites(final_list[:10])
-        if len(ranked_universities) == 10:
-            return ranked_universities
+        ranked_universities_with_major = []
+        for university, rank in ranked_universities:
+            ranked_universities_with_major.append((university, rank, major))
+
+        if (len(ranked_universities_with_major) == 10):
+            print(ranked_universities_with_major)
+            return ranked_universities_with_major
         else:
             n_neighbors += 2
 
-    return ('Sorry, We could not find any university for you!' if len(ranked_universities) < 5 else ranked_universities)
+    return ('Sorry, We could not find any university for you!' if len(ranked_universities_with_major) < 5 else ranked_universities_with_major)

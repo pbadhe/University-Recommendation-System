@@ -10,11 +10,9 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Redressed&Berkshire+Swash&family=Kaushan+Script&family=Montserrat:wght@100;400;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
 
-        <title>
-          
-            University Recommendation System </title>
+        <title>University Recommendation System </title>
     </head>
     <body>
 
@@ -22,7 +20,7 @@
         <section class="navigation-bar">
             <nav class="navbar navbar-expand-lg py-3">
 
-                <a class="navbar-brand" href="{{ url_for('home') }}">Uni - Match</a>
+                <a class="navbar-brand" href="{{ url_for('home') }}">UniMatch</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -57,53 +55,37 @@
             <h2>About Us</h2>
             <p>Welcome to our website! We are a team of passionate individuals who strive to provide you with the best service possible. Our team consists of:</p>
             <div class="row">
-              <div class="col-md-6">
-                <div class="card text-center">
-                  <div class="card-body">
-                    <h5 class="card-title">Pranav</h5>
-                    <p class="card-text">Email: pbadhe@iu.edu</p>
-                  </div>
+                <div align = center, class="col-md-6">
+                    <ul>
+                        <li>
+                            <strong>Name:</strong> Pranav 
+                            <br>
+                            <strong>Email: </strong> pbadhe@iu.edu
+                        </li>
+                        <li>
+                            <strong>Name:</strong> Siddhant 
+                            <br>
+                            <strong>Email: </strong> sidpatil@iu.edu
+                    </ul>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card text-center">
-                  <div class="card-body">
-                    <h5 class="card-title">Siddhant</h5>
-                    <p class="card-text">Email: sidpatil@iu.edu</p>
-                  </div>
+                <br>
+                <br>
+                <div align = center, class="col-md-6">
+                    <ul>
+                        <li>
+                            <strong>Name:</strong> Mrunal
+                            <strong>Email: </strong> mrupatil@iu.edu
+                        </li>
+                        <li>
+                            <strong>Name:</strong> Sarthak 
+                            <br>
+                            <strong>Email: </strong> schawat@iu.edu
+                        </li>
+                    </ul>
                 </div>
-              </div>
             </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="card text-center">
-                  <div class="card-body">
-                    <h5 class="card-title">Mrunal</h5>
-                    <p class="card-text">Email: mrupatil@iu.edu</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card text-center">
-                  <div class="card-body">
-                    <h5 class="card-title">Sarthak</h5>
-                    <p class="card-text">Email: schawat@iu.edu</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
+            <br>
+        
+        </div> 
         <p align = center>Feel free to contact us anytime for any queries or feedback.</p>
-
-
-        <footer class="footer">
-            <ul class="nav justify-content-center">
-                <li><a class="footer-items" href="{{ url_for('home') }}">Home</a></li>
-                <li><a class="footer-items" href="https://github.com/pbadhe/University-Recommendation-System.git" target="_blank">GitHub</a></li>
-                <li><a class="footer-items" href="#">About</a></li>
-            </ul>
-            <hr>
-            <p class="text-center copyright">© Group ID-06</p>
-        </footer>
 

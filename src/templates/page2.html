@@ -12,8 +12,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Redressed&Berkshire+Swash&family=Kaushan+Script&family=Montserrat:wght@100;400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
 
-        <title>
-            University Recommendation System </title>
+        <title>University Recommendation System </title>
     </head>
     <body>
 
@@ -21,7 +20,7 @@
         <section class="navigation-bar">
             <nav class="navbar navbar-expand-lg py-3">
 
-                <a class="navbar-brand" href="{{ url_for('home') }}">Uni - Match</a>
+                <a class="navbar-brand" href="{{ url_for('home') }}">UniMatch</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -64,70 +63,64 @@
                             <select class="form-select" id="major" name="Major">
                                 <option selected disabled value="">Choose a Major</option>
                                 {% for program in programs %}
-                                    {% if program == request.form.get('Major') %}
-                                        <option value="{{ program }}" selected>{{ program }}</option>
-                                    {% else %}
-                                        <option value="{{ program }}">{{ program }}</option>
-                                    {% endif %}
+                                    <option value="{{ program }}">{{ program }}</option>
                                 {% endfor %}
                             </select>
                         </div>
-                                  
+<!-- 
                         <div class="mb-3">
                             <label class="form-label">Select Score Type:</label><br>
                             <div class="form-check form-check-inline">
                                 <input type="radio" id="toefl" name="scoreType" value="TOEFL" class="form-check-input">
                                 <label for="toefl" class="form-check-label">TOEFL</label>
                             </div>
-                            <div class="form-check form-check-inline">
+                             <div class="form-check form-check-inline">
                                 <input type="radio" id="ielts" name="scoreType" value="IELTS" class="form-check-input">
                                 <label for="ielts" class="form-check-label">IELTS</label>
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div> -->
                         <div class="mb-3">
                             <fieldset>
-                              <legend>TOEFL/IELTS Scores:</legend>
+                              <legend>TOEFL Scores:</legend>
                               <label for="toefls" class="form-label">Score:</label>
-                              <input type="number" max="120" id="toefls" name="toeflScore" class="form-control"  value="{{ request.form.get('toeflScore', '') }}" >
+                              <input type="number" id="toefls" name="toeflScore" class="form-control" max="120" >
+                            </fieldset>
+                          </div>
+                          <div class="mb-3">
+                            <fieldset>
+                              <legend>GRE Scores:</legend>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <label for="greq" class="form-label">Quantitative Score:</label>
+                                  <input type="number" id="greq" name="GRE_Q" class="form-control" max="170">
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="grev" class="form-label">Verbal Score:</label>
+                                  <input type="number" id="grev" name="GRE_V" class="form-control" max="170">
+                                </div>
+                                <div class="col-md-4">
+                                  <label class="form-label">Analytical Writing:</label>
+                                  <input step=".01" name="GRE_AWA" class="form-control">
+                                </div>
+                              </div>
                             </fieldset>
                           </div>
                           
-
-                          <div class="mb-3">
-                            <fieldset>
-                                <legend>GRE Scores:</legend>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label for="greq" class="form-label">Quantitative Score:</label>
-                                        <input type="number" max="170" id="greq" name="GRE_Q" class="form-control" max="170" value="{{ request.form.get('GRE_Q', '') }}">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="grev" class="form-label">Verbal Score:</label>
-                                        <input type="number" max="170" id="grev" name="GRE_V" class="form-control" max="170" value="{{ request.form.get('GRE_V', '') }}">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="grea" class="form-label">Analytical Writing:</label>
-                                        <input type="text" id="grea" name="GRE_AWA" class="form-control" step="any" value="{{ request.form.get('GRE_AWA', '') }}">
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                          
                         <div class="mb-3">
                             <label for="months" class="form-label">Work Experience (in months):</label>
-                            <input type="number" id="months" name="industryExp" class="form-control" placeholder="Example: 24" value="{{ request.form.industryExp }}">
+                            <input type="number" id="months" name="industryExp" class="form-control" placeholder="Example: 24">
                         </div>
                         <div class="mb-3">
                             <label for="months" class="form-label">Research Experience (in months):</label>
-                            <input type="number" id="months" name="researchExp" class="form-control" placeholder="Example: 8" value="{{ request.form.researchExp }}">
+                            <input type="number" id="months" name="researchExp" class="form-control" placeholder="Example: 8">
                         </div>
                         <div class="mb-3">
                             <label for="cgpa" class="form-label">CGPA (out of 4):</label>
-                            <input type="text" id="cgpa" name="CGPA" class="form-control" step="any" value="{{ request.form.CGPA }}">
+                            <input type="number" step=".01" name="CGPA" class="form-control">
                         </div>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-dark btn-lg click-btn">Submit</button>
-                            <button type="button" class="btn btn-dark btn-lg click-btn" onclick="window.location.href = '/page2';">Reset</button>
+                            <button type="reset" class="btn btn-dark btn-lg click-btn">Reset</button>
 
                         </div>
                     </form>
@@ -135,35 +128,39 @@
                 <div class="col-md-6">
                     <h1 class="text-center mb-4">Recommended Universities</h1>
                     <div class="container">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>University Name</th>
-                                    <th>Ranking</th>
-                                    <th>Program</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for univ in universities %}
-                                    <tr>
-                                        <td>{{ univ }}</td>
-                                        <td>TBD</td>
-                                        <td>{{ request.form.get('Major') }}</td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>University Name</th>
+                            <th>Ranking</th>
+                            <th>Program</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- <tr>
+                            <td>Columbia University</td>
+                            <td>11</td>
+                            <td>Computer Science</td>
+                        </tr>
+                        <tr>
+                            <td>University of Texas--Austin</td>
+                            <td>9</td>
+                            <td>Computer Science</td>
+                        </tr>
+                        <tr>
+                            <td>Cornell University</td>
+                            <td>6</td>
+                            <td>Computer Science</td>
+                        </tr> -->
+                        {% for univ in universities %}
+                            <tr>
+                                <td>{{ univ[0] }}</td><td>{{ univ[1] }}</td><td>{{ univ[2] }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
                     </div>
                 </div>
-                <footer class="footer">
-                    <ul class="nav justify-content-center">
-                        <li><a class="footer-items" href="{{ url_for('home') }}">Home</a></li>
-                        <li><a class="footer-items" href="https://github.com/pbadhe/University-Recommendation-System.git" target="_blank">GitHub</a></li>
-                        <li><a class="footer-items" href="#">About</a></li>
-                    </ul>
-                    <hr>
-                    <p class="text-center copyright">© Group ID-06</p>
-                </footer>
             </div> <!-- End container -->
         </body>
     </html>
