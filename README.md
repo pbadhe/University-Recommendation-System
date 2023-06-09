@@ -3,6 +3,16 @@ A quick recommendation system for international MS students
 
 This project aims to develop a recommendation system for university selection based on the Weighted K-Nearest Neighbors (KNN) algorithm. By analyzing various factors and historical data, we seek to provide personalized recommendations to students looking for the most suitable universities based on their preferences and academic profile. The recommendation system utilizes machine learning techniques and the weighted KNN algorithm to generate accurate and relevant recommendations.
 
+# Table of Contents
+Introduction
+Installation
+Usage
+Data
+Model Training
+Evaluation
+Contributing
+License
+
 # Introduction
 Choosing the right university is a critical decision for students, considering factors such as location, academic programs, campus facilities, reputation, and more. This project focuses on building a recommendation system that assists students in making informed choices by leveraging historical data and the weighted KNN algorithm.
 
