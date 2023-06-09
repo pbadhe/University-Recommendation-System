@@ -23,13 +23,9 @@ Please ensure that the data is formatted properly and includes the necessary fea
 The model training process involves the following steps:
 
 1) Data preprocessing: Prepare the university and student preference dataset by cleaning the data, handling missing values, and transforming features as required.
-
 2) Feature engineering: Extract relevant features from the dataset that can contribute to the recommendation process. This step may involve feature selection, dimensionality reduction, or generating new features based on domain knowledge.
-
 3) Model selection: Choose the Weighted KNN algorithm as the recommendation model. Weighted KNN takes into account the importance of different features when calculating distances between data points.
-
 4) Model training: Split the dataset into training and validation sets, and train the recommendation model using the Weighted KNN algorithm. Optimize the model parameters to improve performance.
-
 5) Model evaluation: Assess the performance of the trained recommendation model using appropriate evaluation metrics. Evaluate the model's accuracy, precision, recall, or other suitable metrics based on the nature of the recommendation task.
 
 Refer to the code and documentation provided in the repository for detailed instructions on training the model.
