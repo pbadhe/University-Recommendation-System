@@ -30,5 +30,12 @@ The model training process involves the following steps:
 
 Refer to the code and documentation provided in the repository for detailed instructions on training the model.
 
+# Evaluation
+To evaluate the performance of the recommendation model, compare the generated recommendations against actual student choices and feedback. Measure the accuracy of the recommendations and gather feedback from users to assess the system's effectiveness.
+
+Additionally, you can employ evaluation techniques such as cross-validation or holdout evaluation to estimate the model's performance on unseen data and detect potential overfitting. Continuous evaluation and feedback from users will help improve the recommendation system over time.
+
+
+
 
 Link : http://pbadhe.pythonanywhere.com/
