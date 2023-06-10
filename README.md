@@ -12,6 +12,14 @@ Evaluation
 Contributing
 License
 
+## Table of Contents
+
+- [Section 1](#section-1)
+- [Section 2](#section-2)
+- [Section 3](#section-3)
+...
+
+
 # Introduction
 Choosing the right university is a critical decision for students, considering factors such as location, academic programs, campus facilities, reputation, and more. This project focuses on building a recommendation system that assists students in making informed choices by leveraging historical data and the weighted KNN algorithm.
 
