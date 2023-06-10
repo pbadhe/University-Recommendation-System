@@ -11,7 +11,7 @@ This project aims to develop a recommendation system for university selection ba
 - [Data](https://github.com/SarthakChawathe/University-Recommendation-System/blob/main/README.md#data)
 - [Model Training](https://github.com/SarthakChawathe/University-Recommendation-System/blob/main/README.md#model-training)
 - [Evaluation](https://github.com/SarthakChawathe/University-Recommendation-System/blob/main/README.md#evaluation)
-
+- [Link to final dashboard]()
 
 
 
