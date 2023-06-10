@@ -4,20 +4,23 @@ A quick recommendation system for international MS students
 This project aims to develop a recommendation system for university selection based on the Weighted K-Nearest Neighbors (KNN) algorithm. By analyzing various factors and historical data, we seek to provide personalized recommendations to students looking for the most suitable universities based on their preferences and academic profile. The recommendation system utilizes machine learning techniques and the weighted KNN algorithm to generate accurate and relevant recommendations.
 
 # Table of Contents
-[1. Introduction](https://github.com/SarthakChawathe/University-Recommendation-System/blob/main/README.md#introduction)
-[2. Usage](https://github.com/SarthakChawathe/University-Recommendation-System/blob/main/README.md#introduction)
-Data
-Model Training
-Evaluation
+[1. ](https://github.com/SarthakChawathe/University-Recommendation-System/blob/main/README.md#introduction)
+[2. ](https://github.com/SarthakChawathe/University-Recommendation-System/blob/main/README.md#introduction)
+
+
+
 Contributing
 License
 
 ## Table of Contents
 
-- [Section 1](#section-1)
-- [Section 2](#section-2)
-- [Section 3](#section-3)
-...
+- [Introduction](#section-1)
+- [Usage](#section-2)
+- [Data](#section-3)
+- [Model Training](#section-1)
+- [Evaluation](#section-2)
+
+
 
 
 # Introduction
