@@ -1,53 +1,41 @@
-# University Recommendation System using Weighted KNN
-A quick recommendation system for international MS students 
+# University Recommendation System (Weighted KNN)
 
-This project aims to develop a recommendation system for university selection based on the Weighted K-Nearest Neighbors (KNN) algorithm. By analyzing various factors and historical data, we seek to provide personalized recommendations to students looking for the most suitable universities based on their preferences and academic profile. The recommendation system utilizes machine learning techniques and the weighted KNN algorithm to generate accurate and relevant recommendations.
+A quick recommendation system for international graduate students in the US to select universities based on Weighted K-Nearest Neighbors (KNN) algorithm.
+By scraping latest graduate data from active websites like YMGrad, TheGradCafe and Edulix, this tool provides personalized recommendations to students looking for the most suitable universities based on their preferences and academic profile. 
 
+## Installation
 
-## Table of Contents
+1. Clone the repository. In the working environment, run the command ```pip install -r requirements.txt``` from the [src](https://github.com/pbadhe/University-Recommendation-System/tree/main/src) folder to install the required packages.
+2. Run the flask server by executing ```python recommend.py``` to host the application.
+3. Click the link in the terminal to start using the application.
 
-- [Introduction](https://github.com/SarthakChawathe/University-Recommendation-System/blob/main/README.md#introduction)
-- [Usage](https://github.com/SarthakChawathe/University-Recommendation-System/blob/main/README.md#introduction)
-- [Data](https://github.com/SarthakChawathe/University-Recommendation-System/blob/main/README.md#data)
-- [Model Training](https://github.com/SarthakChawathe/University-Recommendation-System/blob/main/README.md#model-training)
-- [Evaluation](https://github.com/SarthakChawathe/University-Recommendation-System/blob/main/README.md#evaluation)
-- [Link to final dashboard](https://github.com/SarthakChawathe/University-Recommendation-System/blob/main/README.md#link-to-final-dashboard)
+## Usage
+On the UI, input your details for the fields shown below and let the custom Weighted KNN algorithm do the magic for you. Sample inputs and output results are shown below.
 
+![image](https://github.com/pbadhe/CureNsure/assets/44113251/6bad2f3c-9de3-4a3f-abb3-8f4ffea01496)
+![image](https://github.com/pbadhe/CureNsure/assets/44113251/934e3458-dda6-47a1-87f1-a25e0f4beddd)
 
+## Data
+- The dataset contains information on the admission decisions made by universities for various programs to the applicants which the app uses for implementing our university recommendation system, most accurately catered for Computer Science students. 
+- The data was obtained by web scraping data from the [YM Grad website](https://www.ymgrad.com/admits_rejects/), which provides information on latest admits and rejects. The [prepared dataset](https://github.com/pbadhe/University-Recommendation-System/blob/main/src/data/Prepared%20MS%20University%20Data.csv) also contains records from [TheGradCafe](https://www.thegradcafe.com/) and [Edulix](https://www.edulix.com) (from Kaggle).
+- The original data is a heterogeneous mix of 3 sources which after preprocessing, consists of 8 columns each providing a specific piece of
+information related to the admission decision as discussed below.
 
-# Introduction
-Choosing the right university is a critical decision for students, considering factors such as location, academic programs, campus facilities, reputation, and more. This project focuses on building a recommendation system that assists students in making informed choices by leveraging historical data and the weighted KNN algorithm.
-
-The recommendation system considers various input parameters, such as student preferences (e.g., desired location, program of interest, campus facilities), academic performance, and historical data on universities (e.g., rankings, acceptance rates, alumni feedback). By calculating weighted distances between the student's profile and universities, the system identifies the most similar institutions and provides recommendations accordingly.
-
-# Usage
-1) Prepare the data: Ensure that the dataset containing university profiles and student preferences is available in a suitable format.
-2) Train the recommendation model: Use the provided scripts to train the recommendation model using the available data. 
-3) Generate recommendations: After training the model, you can utilize it to generate personalized recommendations for a given student. Provide the student's profile and preferences as input to the model, and it will return a list of recommended universities ranked by their similarity to the student's profile.
-4) Evaluate the model: Assess the performance of the recommendation model by comparing its recommendations against actual student choices and feedback. Further details on evaluation can be found in the Evaluation section.
-
-# Data
-The data used in this project consists of university profiles, student preferences, and historical information related to universities and student choices. The dataset should contain relevant information such as university attributes (e.g., location, programs offered, facilities), student profiles (e.g., academic performance, preferred location, program of interest), and feedback or choices made by previous students.
-
-Please ensure that the data is formatted properly and includes the necessary features for training the recommendation model. For guidance on data preparation, refer to the documentation provided in the repository.
-
-# Model Training
-The model training process involves the following steps:
-
-1) Data preprocessing: Prepare the university and student preference dataset by cleaning the data, handling missing values, and transforming features as required.
-2) Feature engineering: Extract relevant features from the dataset that can contribute to the recommendation process. This step may involve feature selection, dimensionality reduction, or generating new features based on domain knowledge.
-3) Model selection: Choose the Weighted KNN algorithm as the recommendation model. Weighted KNN takes into account the importance of different features when calculating distances between data points.
-4) Model training: Split the dataset into training and validation sets, and train the recommendation model using the Weighted KNN algorithm. Optimize the model parameters to improve performance.
-5) Model evaluation: Assess the performance of the trained recommendation model using appropriate evaluation metrics. Evaluate the model's accuracy, precision, recall, or other suitable metrics based on the nature of the recommendation task.
-
-Refer to the code and documentation provided in the repository for detailed instructions on training the model.
-
-# Evaluation
-To evaluate the performance of the recommendation model, compare the generated recommendations against actual student choices and feedback. Measure the accuracy of the recommendations and gather feedback from users to assess the system's effectiveness.
-
-Additionally, you can employ evaluation techniques such as cross-validation or holdout evaluation to estimate the model's performance on unseen data and detect potential overfitting. Continuous evaluation and feedback from users will help improve the recommendation system over time.
+#### Features
+1. ’Major’ column specifies the program that the applicant applied to.
+2. ’University’ column specifies which university the applicant got admits from. 
+3. ’Months’ column denotes the professional work experience of the applying candidate.
+3. ’Papers’ column provides information on the research papers or publications that the applicant has authored or co-authored. 
+3. ’CGPA’ column indicates the undergrad score of the applicant on a scale of 4. 
+3. ’GRE Verbal,’ ’GRE Quant,’ and ’GRE AWA’ columns refer to the applicant’s scores in the GRE Verbal, GRE Quant, and GRE Analytical Writing Assessment sections respectively.
+3. ’TOEFL Scores’ column provides information on the applicant’s scores in the TOEFL exam. The ’IELTS’ scores are converted into TOEFL Score based on the official conversion method found on TOEFL website. 
+3. To enhance the recommendations, we have taken University Rankings from website the [US NEWS Rankings](https://www.usnews.com/education/best-global-universities/united-states/computer-science) website
 
 
-# Link to final dashboard
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change. Also, make sure to add tests as appropriate.
 
-Link : http://pbadhe.pythonanywhere.com/
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
